@@ -32,37 +32,39 @@ Run the generator:
 
 	ruby script/generate tweetify
 
-The generator will install an initializer which describes Tweetify's configuration options. Be sure to update this with your own Twitter search string and 'search agent' name
+The generator will install an initializer which describes Tweetify's configuration options. Be sure to update this with your own Twitter search string and 'search agent' name.
 
 == Basic Usage
 
-Once the rufus scheduler task is running, it will go off and cache your last N (BlogPost.post_limit) blog posts locally
+Once the rufus scheduler task is running, it will go off and cache your last N (Tweet.tweet_limit) twitter serach matches.
 
 Inside your relevant controller, all you need to do is read the cached posts from your database.
 
-  @blog_posts = BlogPost.find(:all, :limit => BLOG_POST_LIMIT)
+  @tweets            = Tweet.find(:all, :limit => 3)
 
 And render them in your view as you wish
 
 For convenience, some partials are included
 
-  = render :partial => '/blog_posts/list', :locals => { :blog_posts => @news_posts }
+  = render :partial => '/tweets/list', :locals => { :tweets => @tweets }
 
-== Advanced Usage
+== TODO
 
-Tweetify can also work with multiple Posterous blogs. The BlogPost model is compatible with STI, so all you need to do is subclass it. E.g. in app/models/news_post.rb
+Please refer to TODO file.
 
+== Maintainers
 
-  def NewsPost < BlogPost
-  ...
+* Glenn Roberts
 
-You'll need to set up your rufus cron task to cache the relevant blog posts
+== Contributors
 
-  scheduler.every '1h' do
-    ...
-    NewsPost.cache_posts( 'some_other_posterous_user', 5)
-  end
+Check them in the CHANGELOG or do `git shortlog -s -n` in the cloned repository.
 
-And the controller/views work pretty much the same
+== Bugs and Feedback
 
-  @news_posts = NewsPost.find(:all, :limit => BLOG_POST_LIMIT)
+If you discover any bugs or want to drop a line, feel free to create an issue on
+GitHub.
+
+http://github.com/siyelo/siyelo-blogify/issues
+
+MIT License. Copyright 2010. Siyelo Software CC. http://www.siyelo.com
