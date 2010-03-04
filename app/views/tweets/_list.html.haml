@@ -1,0 +1,5 @@
+.tweets
+  - tweets.each do |t|
+    .tweet
+      .title=     link_to time_ago_in_words(t.tweet_created_at) + " ago by #{h t.from_user}", t.link
+      .body=      auto_link t.text

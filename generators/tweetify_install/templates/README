@@ -1,0 +1,15 @@
+
+===============================================================================
+
+Some setup you must do manually if you haven't yet:
+
+  1. Ensure you have defined your Twitter user name in config/tweetify.rb
+
+  2. Ensure you have defined your Twitter search agent in config/tweetify.rb
+
+  3. Run rake db:migrate to create the Tweets table.
+
+Note: the initializer creates its own Rufus scheduler task - so if you have
+other Rufus tasks, you may want to consolidate them.
+
+===============================================================================
