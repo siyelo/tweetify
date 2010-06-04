@@ -6,11 +6,11 @@ A Rails engine for embedding Twitter extracts
 
 Install the tweetify gem:
 
-  sudo gem install siyelo-tweetify
+  $ sudo gem install siyelo-tweetify
 
 Run the generator:
 
-	ruby script/generate tweetify
+  $ ruby script/generate tweetify
 
 The generator will install an initializer which describes Tweetify's configuration options. Be sure to update this with your own Twitter search string and 'search agent' name.
 
@@ -20,11 +20,15 @@ Once the rufus scheduler task is running, it will go off and cache your last N (
 
 Inside your relevant controller, all you need to do is read the cached posts from your database.
 
-  @tweets            = Tweet.find(:all, :limit => 3)
+  @tweets = Tweet.find(:all, :limit => 3)
 
 And render them in your view as you wish
 
-For convenience, some partials are included
+For convenience, some partials are included. To copy the view partials from tweetify to your app just run the following command:
+
+  $ script/generate tweetify_views 
+
+Then in your view;
 
   = render :partial => '/tweets/list', :locals => { :tweets => @tweets }
 
