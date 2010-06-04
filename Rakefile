@@ -2,7 +2,6 @@ require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
 
-
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
@@ -12,7 +11,7 @@ begin
     gem.email = "glenn.roberts@siyelo.com"
     gem.homepage = "http://github.com/siyelo/siyelo-tweetify"
     gem.authors = ["Glenn Roberts"]
-    gem.add_development_dependency 'dancroak-twitter-search'
+    gem.add_dependency 'edgar-twitter-search', '>=0.5.10'
     gem.files =  FileList["[A-Z]*", "{app,config,generators,lib}/**/*", "init.rb"]
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end

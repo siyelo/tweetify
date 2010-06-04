@@ -40,7 +40,7 @@ class Tweet < ActiveRecord::Base
         end
       end
 
-      tweets
+      tweets.nil? ? [] : tweets
     end
 
     def self.update_tweets(tweets)
