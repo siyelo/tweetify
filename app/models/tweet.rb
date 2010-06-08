@@ -3,6 +3,9 @@ class Tweet < ActiveRecord::Base
   cattr_accessor :search_string
   @@search_string = "siyelo OR \"siyelo software\""
 
+  cattr_accessor :language
+  @@language = "en"
+
   cattr_accessor :search_agent
   @@search_agent = 'tweetify_agent'
 
@@ -30,7 +33,7 @@ class Tweet < ActiveRecord::Base
       begin
         timeout(read_timeout) do
           client = TwitterSearch::Client.new(search_agent)
-          tweets = client.query(:q => search_string, :rpp => tweet_limit, :page => '1')
+          tweets = client.query(:q => search_string, :lang => language, :rpp => tweet_limit, :page => '1')
         end
       rescue TimeoutError
         logger.warn("Timeout accessing Twitter: #{$!}, #{$@}")

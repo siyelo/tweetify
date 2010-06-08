@@ -1,4 +1,4 @@
-class CreateTweets < ActiveRecord::Migration
+class TweetifyCreateTweets < ActiveRecord::Migration
   def self.up
     create_table :tweets do |t|
       t.string    :type
